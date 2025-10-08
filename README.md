@@ -145,12 +145,32 @@ The SkyWalking agent can be configured using environment variables:
 
 ```
 .
-├── main.py                        # FastAPI application
+├── main.py                        # Main FastAPI application with /test endpoint
+├── examples.py                    # Real-world background task examples
+├── test_app.py                    # Standalone test script
 ├── requirements.txt               # Python dependencies
 ├── skywalking.ini                 # SkyWalking configuration file
+├── Dockerfile                     # Docker image configuration
+├── docker-compose.yml             # Docker Compose for full stack
 ├── run.sh                         # Script to run with SkyWalking
 ├── run_without_skywalking.sh     # Script to run without SkyWalking
+├── USAGE.md                       # Detailed usage guide
+├── .gitignore                     # Git ignore file
 └── README.md                      # This file
+```
+
+## Additional Examples
+
+See `examples.py` for real-world use cases including:
+- Email notifications on user registration
+- File processing after upload
+- Analytics logging for product views
+- Cache warming after invalidation
+- Multiple background tasks per endpoint
+
+Run the examples server on port 8001:
+```bash
+python examples.py
 ```
 
 ## Dependencies
