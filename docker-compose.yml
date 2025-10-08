@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - SW_AGENT_NAME=fastapi-background-tasks-demo
+      - SW_AGENT_COLLECTOR_BACKEND_SERVICES=skywalking-oap:11800
+      - SW_AGENT_PROTOCOL=grpc
+      - SW_AGENT_LOGGING_LEVEL=INFO
+    depends_on:
+      - skywalking-oap
+    networks:
+      - skywalking-network
+
+  # Optional: Include SkyWalking OAP server for complete demo
+  skywalking-oap:
+    image: apache/skywalking-oap-server:9.5.0
+    ports:
+      - "11800:11800"
+      - "12800:12800"
+    environment:
+      - SW_STORAGE=h2
+    networks:
+      - skywalking-network
+
+  # Optional: Include SkyWalking UI
+  skywalking-ui:
+    image: apache/skywalking-ui:9.5.0
+    ports:
+      - "8080:8080"
+    environment:
+      - SW_OAP_ADDRESS=http://skywalking-oap:12800
+    depends_on:
+      - skywalking-oap
+    networks:
+      - skywalking-network
+
+networks:
+  skywalking-network:
+    driver: bridge
