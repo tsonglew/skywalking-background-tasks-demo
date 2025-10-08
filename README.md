@@ -159,6 +159,12 @@ The SkyWalking agent can be configured using environment variables:
 └── README.md                      # This file
 ```
 
+## Documentation
+
+- **[USAGE.md](USAGE.md)**: Detailed usage guide with scenarios and troubleshooting
+- **[ARCHITECTURE.md](ARCHITECTURE.md)**: Architecture diagrams and flow explanations
+- **[examples.py](examples.py)**: Real-world implementation examples
+
 ## Additional Examples
 
 See `examples.py` for real-world use cases including:
